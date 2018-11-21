@@ -17,6 +17,11 @@ func main() {
 	defer f.Close()
 	log.SetOutput(f)
 
+	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
+	http.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "./robots.txt")
+	})
+
 	const indexPage = "public/index.html"
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "POST" {
@@ -25,6 +30,7 @@ func main() {
 			}
 		} else {
 			log.Printf("Serving %s to %s...\n", indexPage, r.RemoteAddr)
+			w.Header().Set("Cache-Control", "max-age=86400")
 			http.ServeFile(w, r, indexPage)
 		}
 	})
@@ -34,8 +40,6 @@ func main() {
 			log.Printf("Received task %s scheduled at %s\n", r.Header.Get("X-Aws-Sqsd-Taskname"), r.Header.Get("X-Aws-Sqsd-Scheduled-At"))
 		}
 	})
-
-	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 
 	log.Printf("Listening on port %s\n\n", port)
 	http.ListenAndServe(":"+port, nil)
