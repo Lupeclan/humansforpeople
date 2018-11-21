@@ -35,7 +35,7 @@ func main() {
 		}
 	})
 
-	http.Handle("/css", http.FileServer(http.Dir("css/")))
+	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 
 	log.Printf("Listening on port %s\n\n", port)
 	http.ListenAndServe(":"+port, nil)
