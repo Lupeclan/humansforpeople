@@ -30,7 +30,7 @@ func main() {
 			}
 		} else {
 			log.Printf("Serving %s to %s...\n", indexPage, r.RemoteAddr)
-			w.Header().Set("Cache-Control", "max-age=86400")
+			w.Header().Set("Cache-Control", "max-age=3600")
 			http.ServeFile(w, r, indexPage)
 		}
 	})
