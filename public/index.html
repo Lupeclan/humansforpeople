@@ -11,20 +11,65 @@
     li {
         margin: 0.5em 0 0.5em 0;
     }
+
+    div.card {
+      min-height: 174px;
+    }
+
+    @media (max-width: 576px) { 
+      div.card { min-height: initial; }
+    }
+
+    @media (min-width: 1200px) {
+      div.card { min-height: initial; }
+    }
+
+    p.card-text {
+      min-height: 48px;
+    }
+
+    h2 {
+      margin-bottom: 0.75em;
+    }
+
+    .strike { text-decoration: line-through }
   </style>
 </head>
 <body>
   <main role="main">
     <section>
-        <div class="jumbotron">
-            <div class="container">
-              <h1 class="display-3">Humans for People</h1>
-              <p>By <i>humans</i> for people.</p>
-            </div>
+      <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Humans for People</h1>
+            <p>By <i>humans</i> for <i>people</i>.</p>
           </div>
-          <div class="container">
+        </div>
+        <div class="container">
+            <h2>Testimonies</h2>
+        </div> 
+        <div class="container card-columns">
+          <div class="card">
+              <div class="card-body">
+                <p class="card-text">By far <b>the</b> best place for us fellow <i>humans</i> to really feel like <i>people</i>.</p>
+                <footer class="blockquote-footer">Greg <span class="strike">the Giraffe</span></footer>
+              </div>
+          </div>
+          <div class="card">
+              <div class="card-body">
+                <p class="card-text">TAKE MY PANTS OFF, USE MY SOCKS, SMELL MY SOCKS, EAT MY FACE OFF.</p>
+                <footer class="blockquote-footer">Liars</footer>
+              </div>
+          </div>
+          <div class="card">
+              <div class="card-body">
+                <p class="card-text">There's like 60 stones guys, you really need to get going. <i>glub glub</i></p>
+                <footer class="blockquote-footer">Japanese Carp</footer>
+              </div>
+          </div>
+        </div>
+        <div class="container">
             <div class="col-md-10 col-md-offset-2">
-                <h2>Important</h2>
+                <h2>Imperative knowledge</h2>
                 <ul>
                   <li><a href="http://timecube.2enp.com/" target="_blank" rel="noopener">TIME CUBE</a></li>
                   <li><a href="https://html5zombo.com/" target="_blank" rel="noopener">Zombo.com</a></li>
@@ -32,7 +77,7 @@
                 </ul>
             </div>
           </div>
-    </section>
+      </section>
     </main>
 </body>
 </html>
