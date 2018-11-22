@@ -45,8 +45,32 @@
       margin-bottom: 0.75em;
     }
 
-    .strike { text-decoration: line-through }
+    .strike { text-decoration: line-through; }
+    #countdown { 
+      color: yellow;
+      background-color: black;
+      max-width: 86px;
+      min-width: 86px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+    }
   </style>
+  <script type="text/javascript">
+    var today = new Date();
+    window.hfp = {
+      end: new Date(1543813200000)
+    };
+
+    window.addEventListener("load", function() {
+      setInterval(function() {
+        var dif = new Date().getTime() - window.hfp.end.getTime();
+        var seconds = Math.abs(dif / 1000);
+        document.getElementById("countdown").innerHTML = Math.floor(seconds);
+      }, 1000);
+    });
+  </script>
 </head>
 <body>
   <main role="main">
@@ -84,15 +108,18 @@
           <h2>Imperative knowledge</h2>
         </div> 
         <div class="container">
-            <div class="col-md-10 col-md-offset-2">                
-              <ul>
-                <li><a href="http://timecube.2enp.com/" target="_blank" rel="noopener">TIME CUBE</a></li>
-                <li><a href="https://html5zombo.com/" target="_blank" rel="noopener">Zombo.com</a></li>
-                <li><a href="https://www.youtube.com/watch?v=QrGrOK8oZG8" target="_blank" rel="noopener">Too Many Cooks</a></li>
-              </ul>
-            </div>
+          <div class="col-md-10 col-md-offset-2">                
+            <ul>
+              <li><a href="http://timecube.2enp.com/" target="_blank" rel="noopener">TIME CUBE</a></li>
+              <li><a href="https://html5zombo.com/" target="_blank" rel="noopener">Zombo.com</a></li>
+              <li><a href="https://www.youtube.com/watch?v=QrGrOK8oZG8" target="_blank" rel="noopener">Too Many Cooks</a></li>
+            </ul>
           </div>
+        </div>
       </section>
     </main>
+    <footer>
+      <div id="countdown"></div>
+    </footer>
 </body>
 </html>
