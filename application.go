@@ -17,12 +17,8 @@ func main() {
 	defer f.Close()
 	log.SetOutput(f)
 
-	http.Handle("/css/", func(w http.ResponseWriter, r *http.Request) {
-		addRespHeaders(w)
-		http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
-	})
+	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css")))))
 	http.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
-		addRespHeaders(w)
 		http.ServeFile(w, r, "./robots.txt")
 	})
 
