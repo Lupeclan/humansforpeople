@@ -30,7 +30,7 @@ func main() {
 			}
 		} else {
 			log.Printf("Serving %s to %s...\n", indexPage, r.RemoteAddr)
-			addRespHeaders(w)
+			w.Header().Set("Cache-Control", "max-age=3600")
 			http.ServeFile(w, r, indexPage)
 		}
 	})
@@ -43,8 +43,4 @@ func main() {
 
 	log.Printf("Listening on port %s\n\n", port)
 	http.ListenAndServe(":"+port, nil)
-}
-
-func addRespHeaders(w http.ResponseWriter) {
-	w.Header().Set("Cache-Control", "max-age=3600")
 }
