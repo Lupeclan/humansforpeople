@@ -22,6 +22,10 @@ func main() {
 		http.ServeFile(w, r, "./robots.txt")
 	})
 
+	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "./favicon.ico")
+	})
+
 	const indexPage = "public/index.html"
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "POST" {
