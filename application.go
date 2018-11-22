@@ -17,8 +17,12 @@ func main() {
 	defer f.Close()
 	log.SetOutput(f)
 
-	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
+	http.Handle("/css/", func(w http.ResponseWriter, r *http.Request) {
+		addRespHeaders(w)
+		http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
+	})
 	http.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
+		addRespHeaders(w)
 		http.ServeFile(w, r, "./robots.txt")
 	})
 
@@ -30,7 +34,7 @@ func main() {
 			}
 		} else {
 			log.Printf("Serving %s to %s...\n", indexPage, r.RemoteAddr)
-			w.Header().Set("Cache-Control", "max-age=3600")
+			addRespHeaders(w)
 			http.ServeFile(w, r, indexPage)
 		}
 	})
@@ -43,4 +47,8 @@ func main() {
 
 	log.Printf("Listening on port %s\n\n", port)
 	http.ListenAndServe(":"+port, nil)
+}
+
+func addRespHeaders(w http.ResponseWriter) {
+	w.Header().Set("Cache-Control", "max-age=3600")
 }
