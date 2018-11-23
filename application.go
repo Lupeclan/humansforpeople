@@ -17,7 +17,9 @@ func main() {
 	defer f.Close()
 	log.SetOutput(f)
 
-	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
+	http.HandleFunc("/css/", serveStaticContent)
+	http.HandleFunc("/scripts/", serveStaticContent)
+
 	http.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "./robots.txt")
 	})
@@ -34,7 +36,7 @@ func main() {
 			}
 		} else {
 			log.Printf("Serving %s to %s...\n", indexPage, r.RemoteAddr)
-			w.Header().Set("Cache-Control", "max-age=3600")
+			setRespHeaders(w)
 			http.ServeFile(w, r, indexPage)
 		}
 	})
@@ -47,4 +49,17 @@ func main() {
 
 	log.Printf("Listening on port %s\n\n", port)
 	http.ListenAndServe(":"+port, nil)
+}
+
+func serveStaticContent(w http.ResponseWriter, r *http.Request) {
+	setRespHeaders(w)
+	http.ServeFile(w, r, r.URL.Path[1:])
+}
+
+func setRespHeaders(w http.ResponseWriter) {
+	w.Header().Set("Cache-Control", "max-age=3600")
+	w.Header().Set("X-Frame-Options", "deny")
+	w.Header().Set("X-XSS-Protection", "1; mode=block")
+	w.Header().Set("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
+	w.Header().Set("Content-Security-Policy", "default-src 'unsafe-inline' 'self';")
 }

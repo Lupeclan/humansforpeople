@@ -49,28 +49,15 @@
     #countdown { 
       color: yellow;
       background-color: black;
-      max-width: 86px;
-      min-width: 86px;
+      max-width: 132px;
+      min-width: 132px;
       text-align: center;
       position: fixed;
       bottom: 0;
       right: 0;
     }
   </style>
-  <script type="text/javascript">
-    var today = new Date();
-    window.hfp = {
-      end: new Date(1543813200000)
-    };
-
-    window.addEventListener("load", function() {
-      setInterval(function() {
-        var dif = new Date().getTime() - window.hfp.end.getTime();
-        var seconds = Math.abs(dif / 1000);
-        document.getElementById("countdown").innerHTML = Math.floor(seconds);
-      }, 1000);
-    });
-  </script>
+  <script type="text/javascript" src="../scripts/main.min.js"></script>
 </head>
 <body>
   <main role="main">
