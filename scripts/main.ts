@@ -6,8 +6,6 @@
 setInterval(function() {
     let dif = (window as any).hfp.end.getTime() - new Date().getTime();
     let days = Math.floor(dif / (1000 * 60 * 60 * 24));
-    console.log(dif);
-    console.log(days);
     dif -= days * (1000 * 60 * 60 * 24);
     let hours = Math.floor(dif / (1000 * 60 * 60));
     dif -= hours * (1000 * 60 * 60);

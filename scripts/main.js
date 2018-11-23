@@ -5,8 +5,6 @@ window.addEventListener("load", function () {
     setInterval(function () {
         var dif = window.hfp.end.getTime() - new Date().getTime();
         var days = Math.floor(dif / (1000 * 60 * 60 * 24));
-        console.log(dif);
-        console.log(days);
         dif -= days * (1000 * 60 * 60 * 24);
         var hours = Math.floor(dif / (1000 * 60 * 60));
         dif -= hours * (1000 * 60 * 60);
