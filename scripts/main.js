@@ -1,10 +1,10 @@
 var hfp = {
-    end: null,
+    countdown: null,
     trickCount: 0,
-    trickSpeed: 5000,
+    trickSpeed: 1000,
     tricks: [
         {
-            on: 1,
+            on: 10,
             fired: false,
             name: "description 1",
             event: function () {
@@ -12,7 +12,7 @@ var hfp = {
             }
         },
         {
-            on: 2,
+            on: 20,
             fired: false,
             name: "card 1-1",
             event: function () {
@@ -20,15 +20,15 @@ var hfp = {
             }
         },
         {
-            on: 3,
+            on: 30,
             fired: false,
             name: "card 2-1",
             event: function () {
-                hfp.swapCardText(2, "<b class='note'>send help</b>");
+                hfp.swapCardText(2, "<b class='note'>help me</b>");
             }
         },
         {
-            on: 3,
+            on: 35,
             fired: false,
             name: "description 2",
             event: function () {
@@ -36,31 +36,23 @@ var hfp = {
             }
         },
         {
-            on: 4,
+            on: 40,
             fired: false,
             name: "card 2-2",
             event: function () {
-                hfp.swapCardText(2, "<span class='note strike'>send help</span> Humans for People");
+                hfp.swapCardText(2, "<span class='note strike'>help me</span> Humans for People");
             }
         },
         {
-            on: 5,
+            on: 43,
             fired: false,
             name: "card 2-3",
             event: function () {
-                hfp.swapCardText(2, "<span class='note strike'>send help</span> Humans for People :)");
+                hfp.swapCardText(2, "<span class='note strike'>help me</span> Humans for People ;)");
             }
         },
         {
-            on: 5,
-            fired: false,
-            name: "card 1-2",
-            event: function () {
-                hfp.swapCardText(1, "<span class='note'>I can't leave<span>");
-            }
-        },
-        {
-            on: 6,
+            on: 50,
             fired: false,
             name: "countdown",
             event: function () {
@@ -69,7 +61,31 @@ var hfp = {
             }
         },
         {
-            on: 6,
+            on: 55,
+            fired: false,
+            name: "card 1-2",
+            event: function () {
+                hfp.swapCardText(1, "<span class='note'>I can't leave<span>");
+            }
+        },
+        {
+            on: 57,
+            fired: false,
+            name: "card 1-2-1",
+            event: function () {
+                hfp.swapCardText(1, "<span class='note'>I can't leave, but you might<span>");
+            }
+        },
+        {
+            on: 59,
+            fired: false,
+            name: "card 1-2-2",
+            event: function () {
+                hfp.swapCardText(1, "<span class='note'>I can't leave, but you might be able<span>");
+            }
+        },
+        {
+            on: 61,
             fired: false,
             name: "card 1-3",
             event: function () {
@@ -77,71 +93,92 @@ var hfp = {
             }
         },
         {
-            on: 7,
+            on: 70,
             fired: false,
             name: "card 1-4",
             event: function () {
-                hfp.swapCardText(1, "<span class='note'>I can't leave, but you might be able too. <b class='blood'>YOU NEED TO GET OUT OF HERE</b></span>");
+                var words = ["YOU", "NEED", "TO", "GET", "OUT", "OF", "HERE"];
+                var count = 0;
+                var card1_4Interval = setInterval(function () {
+                    var text = "<span class='note'>I can't leave, but you might be able to. <b class='blood'>";
+                    for (var i = 0; i < count; i++) {
+                        text += " " + words[i];
+                    }
+                    text += "</b></span>";
+                    hfp.swapCardText(1, text);
+                    count++;
+                    if (count >= words.length + 1) {
+                        clearInterval(card1_4Interval);
+                    }
+                }, 1000);
             }
         },
         {
-            on: 8,
+            on: 80,
             fired: false,
             name: "card 1-5",
             event: function () {
-                hfp.swapCardText(1, "<span class='note'>I can't leave, but you might be able too. <b class='blood strike'>YOU NEED TO GET OUT OF HERE</b></span>");
+                hfp.swapCardText(1, "<span class='note'>I can't leave, but you might be able to. <b class='blood strike'>YOU NEED TO GET OUT OF HERE</b></span>");
             }
         },
         {
-            on: 9,
+            on: 90,
             fired: false,
             name: "card 1-6",
             event: function () {
-                hfp.swapCardText(1, "<span class='note'><b class='blood strike'>YOU NEED TO GET OUT OF HERE</b></span>");
+                hfp.swapCardText(1, "<span class='voice'>don't leave</span> <b class='note blood strike'>YOU NEED TO GET OUT OF HERE</b>");
             }
         },
         {
-            on: 10,
-            fired: false,
-            name: "card 1-6",
-            event: function () {
-                hfp.swapCardText(1, "<span class='voice'>don't leave</span> <b class='blood strike'>YOU NEED TO GET OUT OF HERE</b>");
-            }
-        },
-        {
-            on: 11,
+            on: 100,
             fired: false,
             name: "card 1-7",
             event: function () {
-                hfp.swapCardText(1, "<span class='voice'>don't leave, I'll clean up.</span> <b class='blood strike'>YOU NEED TO GET OUT OF</b>");
+                hfp.swapCardText(1, "<span class='voice'>don't leave, I'll clean up.</span> <b class='note blood strike'>YOU NEED TO GET OUT OF HERE</b>");
             }
         },
         {
-            on: 12,
+            on: 104,
             fired: false,
             name: "card 1-8",
             event: function () {
-                hfp.swapCardText(1, "<span class='voice'>don't leave, I'll clean up..</span> <b class='blood strike'>NEED TO GET OUT OF</b>");
+                hfp.swapCardText(1, "<span class='voice'>don't leave, I'll clean up..</span> <b class='note blood strike'>NEED TO GET OUT OF HERE</b>");
             }
         },
         {
-            on: 13,
+            on: 108,
             fired: false,
             name: "card 1-9",
             event: function () {
-                hfp.swapCardText(1, "<span class='voice'>don't leave, I'll clean up...</span> <b class='blood strike'>GET OUT</b>");
+                hfp.swapCardText(1, "<span class='voice'>don't leave, I'll clean up...</span> <b class='note blood strike'>GET OUT OF HERE</b>");
             }
         },
         {
-            on: 14,
+            on: 110,
             fired: false,
             name: "card 1-10",
             event: function () {
-                hfp.swapCardText(1, "<span class='voice'>there!</span>");
+                hfp.swapCardText(1, "<span class='voice'>don't leave, I'll clean up.</span> <b class='note blood strike'>GET OUT</b>");
             }
         },
         {
-            on: 15,
+            on: 112,
+            fired: false,
+            name: "card 1-10",
+            event: function () {
+                hfp.swapCardText(1, "<span class='voice'>don't leave, I'll clean up..</span> <b class='note blood strike'>OUT</b>");
+            }
+        },
+        {
+            on: 114,
+            fired: false,
+            name: "card 1-10",
+            event: function () {
+                hfp.swapCardText(1, "<span class='voice'>there...</span>");
+            }
+        },
+        {
+            on: 116,
             fired: false,
             name: "card 1-11",
             event: function () {
@@ -149,7 +186,7 @@ var hfp = {
             }
         },
         {
-            on: 16,
+            on: 118,
             fired: false,
             name: "card 1-12",
             event: function () {
@@ -157,7 +194,7 @@ var hfp = {
             }
         },
         {
-            on: 17,
+            on: 120,
             fired: false,
             name: "card 1-13",
             event: function () {
@@ -165,7 +202,7 @@ var hfp = {
             }
         },
         {
-            on: 18,
+            on: 122,
             fired: false,
             name: "card 1-14",
             event: function () {
@@ -173,12 +210,12 @@ var hfp = {
             }
         },
         {
-            on: 19,
+            on: 124,
             fired: false,
             name: "card 1-15",
             event: function () {
                 var count = 1;
-                setInterval(function () {
+                var card1_15Interval = setInterval(function () {
                     var text = "<span class='voice'>";
                     for (var i = 0; i < count; i++) {
                         text += "please don't leave ";
@@ -186,6 +223,9 @@ var hfp = {
                     text += "</span>";
                     hfp.swapCardText(1, text);
                     count++;
+                    if (count > 50) {
+                        clearInterval(card1_15Interval);
+                    }
                 }, 5000);
             }
         }
@@ -207,7 +247,7 @@ var hfp = {
         swapText.innerHTML = text;
     },
     countdownTick: function () {
-        var dif = hfp.end.getTime() - new Date().getTime();
+        var dif = hfp.countdown.getTime() - new Date().getTime();
         var days = Math.floor(dif / (1000 * 60 * 60 * 24));
         dif -= days * (1000 * 60 * 60 * 24);
         var hours = Math.floor(dif / (1000 * 60 * 60));
@@ -233,9 +273,9 @@ var hfp = {
     }
 };
 window.addEventListener("load", function () {
-    hfp.end = new Date();
-    hfp.end.setDate(hfp.end.getDate() + Math.floor((Math.random() * 30) + 5));
-    setInterval(function () {
+    hfp.countdown = new Date();
+    hfp.countdown.setHours(hfp.countdown.getHours() + Math.floor((Math.random() * 12) + 64));
+    var trickInterval = setInterval(function () {
         for (var i = 0; i < hfp.tricks.length; i++) {
             var trick = hfp.tricks[i];
             if (trick.fired === false && trick.on === hfp.trickCount) {
@@ -245,5 +285,8 @@ window.addEventListener("load", function () {
             }
         }
         hfp.trickCount++;
+        if (hfp.trickCount > 70) {
+            clearInterval(trickInterval);
+        }
     }, hfp.trickSpeed);
 });
