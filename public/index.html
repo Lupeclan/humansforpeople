@@ -46,6 +46,18 @@
     }
 
     .strike { text-decoration: line-through; }
+    .blood { color: #990000; }
+    .note { 
+      font-family: FreeMono, monospace;
+      background-color: lightgrey;     
+    }
+
+    .voice {
+      font-family: Helvetica, sans-serif;
+      background-color: black;
+      color: white;
+    }
+
     #countdown { 
       color: yellow;
       background-color: black;
@@ -65,29 +77,35 @@
       <div class="jumbotron">
         <div class="container">
             <h1 class="display-3">Humans for People</h1>
-            <p>By <i>humans</i> for <i>people</i>.</p>
+            <h4 id="main-description">By humans for people.</h4>
           </div>
         </div>
         <div class="container">
             <h2>Testimonies</h2>
         </div> 
         <div class="container card-columns">
-          <div class="card">
+          <div class="card" id="card-1">
               <div class="card-body">
-                <p class="card-text">By far <b>the</b> best place for us fellow <i>humans</i> to really feel like <i>people</i>.</p>
-                <footer class="blockquote-footer">Greg <span class="strike">the Giraffe</span></footer>
+                <p class="card-text" id="card-text-1">It's become my favourite website, <span data-card-num="1">I spend way too much time here.</span></p>
+                <footer class="blockquote-footer" id="card-footer-1">Lisa Hamburg</span></footer>
               </div>
           </div>
-          <div class="card">
+          <div class="card" id="card-2">
               <div class="card-body">
-                <p class="card-text">TAKE MY PANTS OFF, USE MY SOCKS, SMELL MY SOCKS, EAT MY FACE OFF.</p>
-                <footer class="blockquote-footer">Liars</footer>
+                <p class="card-text" id="card-text-2">I don't know where my life would be without <span data-card-num="2">Humans for People.</span></p>
+                <footer class="blockquote-footer" id="card-footer-2">Albert Franklin</footer>
               </div>
           </div>
-          <div class="card">
+          <div class="card" id="card-3">
               <div class="card-body">
-                <p class="card-text">There's like 60 stones guys, you really need to get going. <i>glub glub</i></p>
-                <footer class="blockquote-footer">Japanese Carp</footer>
+                <p class="card-text" id="card-text-3">TAKE MY PANTS OFF, USE MY SOCKS, SMELL MY SOCKS, EAT MY FACE OFF.</p>
+                <footer class="blockquote-footer" id="card-footer-3">Liars</footer>
+              </div>
+          </div>
+          <div class="card" id="card-4">
+              <div class="card-body">
+                <p class="card-text" id="card-text-4">There's like 60 stones guys, you really need to get going. <i>glub glub</i></p>
+                <footer class="blockquote-footer" id="card-footer-4">Japanese Carp</footer>
               </div>
           </div>
         </div>
