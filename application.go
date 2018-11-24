@@ -61,5 +61,5 @@ func setRespHeaders(w http.ResponseWriter) {
 	w.Header().Set("X-Frame-Options", "deny")
 	w.Header().Set("X-XSS-Protection", "1; mode=block")
 	w.Header().Set("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
-	w.Header().Set("Content-Security-Policy", "default-src 'unsafe-inline' 'self';")
+	//w.Header().Set("Content-Security-Policy", "default-src 'unsafe-inline' 'self';")
 }
