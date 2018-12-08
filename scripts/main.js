@@ -29,4 +29,46 @@ window.addEventListener("load", function () {
             document.getElementById("countdown").innerHTML = output;
         }, 1000);
     }, 30000);
+    var visitCount = getCookie("vc");
+    var newCount = 0;
+    if (visitCount !== "") {
+        newCount = parseInt(visitCount);
+    }
+    newCount++;
+    setCookie("vc", newCount);
+    var countText = newCount + " time";
+    if (newCount > 1) {
+        countText += "s";
+    }
+    countText += ".";
+    document.getElementById("visit-count").innerHTML = countText;
+    var userName = "You";
+    if (newCount >= 10 && newCount < 25) {
+        userName += " - Student";
+    }
+    else if (newCount >= 25) {
+        userName += " - Disciple";
+    }
+    document.getElementById("user-name").innerHTML = userName;
 });
+function setCookie(cname, cvalue) {
+    var d = new Date();
+    d.setTime(d.getTime() + (20 * 365));
+    var expires = "expires=" + d.toISOString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
